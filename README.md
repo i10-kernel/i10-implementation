@@ -34,8 +34,8 @@ We assume the kernel source tree is downloaded in /usr/src/linux-4.20.0/. You sh
    ```
    make menuconfig
 
-   - To include i10 host: Device Drivers ---> NVME Support ---> &lt;M&gt; i10: A New Remote Storage I/O Stack (host)
-   - To include i10 target: Device Drivers ---> NVME Support ---> &lt;M&gt; i10: A New Remote Storage I/O Stack (target)
+   - To include i10 host: Device Drivers ---> NVME Support ---> <M> i10: A New Remote Storage I/O Stack (host)
+   - To include i10 target: Device Drivers ---> NVME Support ---> <M> i10: A New Remote Storage I/O Stack (target)
    - To use the high resolution timer: General setup ---> Timers subsystem ---> [*] High Resolution Timer Support
    ```
 

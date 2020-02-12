@@ -1,0 +1,22 @@
+; Remote device
+[device]
+filename=/dev/nvme1n1
+
+[global]
+name=random_write
+rw=randwrite
+direct=1
+ioengine=libaio
+size=1G
+gtod_reduce=0
+cpus_allowed_policy=split
+thread
+group_reporting
+time_based
+runtime=60
+
+; controllable variables
+bs=4k
+iodepth=128
+cpus_allowed=0-23
+numjobs=16

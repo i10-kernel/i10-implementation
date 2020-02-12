@@ -37,5 +37,5 @@
 2. Run the Filebench scripts (e.g., filebench/randomread.f). In the scripts, you should specify the target directory where the remote device is mounted (e.g., /mnt):
 
    ```
-   filebench -f filebench/randomread.f
+   taskset -c 0 filebench -f filebench/randomread.f
    ```

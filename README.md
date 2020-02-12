@@ -114,7 +114,7 @@ We assume that the target server has target devices such as NVMe SSD (/dev/nvme0
    nvme list
    ```
 
-5. Run test scripts: refer to '[scripts/](https://github.com/jaehyun-hwang/i10/tree/master/scripts)'.
+5. Run test scripts: refer to '[scripts/](https://github.com/i10-kernel/i10-implementation/tree/master/scripts)'.
 
 ### Configure the delayed doorbell timeout value (in microsecond)
 i10 uses 50us delayed doorbell timer by default. If you want to set the timeout value to, for example, 100us:

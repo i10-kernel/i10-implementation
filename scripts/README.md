@@ -31,7 +31,7 @@
    ulimit -n 524288
    ```
 
-## 3. Filebench
+## (3) Filebench
 1. Install Filebench: https://github.com/filebench/filebench
 
 2. Run the Filebench scripts (e.g., filebench/randomread.f). In the scripts, you should specify the target directory where the remote device is mounted (e.g., /mnt):

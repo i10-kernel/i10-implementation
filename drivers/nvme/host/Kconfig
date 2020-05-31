@@ -81,6 +81,6 @@ config I10_HOST
 	help
 	  This provides i10 remote storage I/O stack (host). i10 is currently
 	  implemented as a new fabric of the NVMe over Fabrics protocol.
-	  (https://github.com/i10-Cornell/implementation)
+	  (https://github.com/i10-kernel/i10-implementation)
 
 	  If unsure, say N.

@@ -78,6 +78,6 @@ config I10_TARGET
 	help
 	  This enables the i10 target support, which currently implemented as
 	  a new fabric of the NVMe over Fabrics target.
-	  (https://github.com/i10-Cornell/implementation)
+	  (https://github.com/i10-kernel/i10-implementation)
 
 	  If unsure, say N.

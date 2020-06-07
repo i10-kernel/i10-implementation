@@ -68,8 +68,8 @@ struct i10_host_request {
 };
 
 enum i10_host_queue_flags {
-	NVME_TCP_Q_ALLOCATED	= 0,
-	NVME_TCP_Q_LIVE		= 1,
+	I10_HOST_Q_ALLOCATED	= 0,
+	I10_HOST_Q_LIVE		= 1,
 };
 
 enum i10_host_recv_state {
@@ -1295,7 +1295,7 @@ static void i10_host_free_queue(struct nvme_ctrl *nctrl, int qid)
 	struct i10_host_ctrl *ctrl = to_i10_host_ctrl(nctrl);
 	struct i10_host_queue *queue = &ctrl->queues[qid];
 
-	if (!test_and_clear_bit(NVME_TCP_Q_ALLOCATED, &queue->flags))
+	if (!test_and_clear_bit(I10_HOST_Q_ALLOCATED, &queue->flags))
 		return;
 
 	if (queue->hdr_digest || queue->data_digest)
@@ -1565,7 +1565,7 @@ static int i10_host_alloc_queue(struct nvme_ctrl *nctrl,
 		goto err_init_connect;
 
 	queue->rd_enabled = true;
-	set_bit(NVME_TCP_Q_ALLOCATED, &queue->flags);
+	set_bit(I10_HOST_Q_ALLOCATED, &queue->flags);
 	i10_host_init_recv_ctx(queue);
 
 	write_lock_bh(&queue->sock->sk->sk_callback_lock);
@@ -1621,7 +1621,7 @@ static void i10_host_stop_queue(struct nvme_ctrl *nctrl, int qid)
 	struct i10_host_ctrl *ctrl = to_i10_host_ctrl(nctrl);
 	struct i10_host_queue *queue = &ctrl->queues[qid];
 
-	if (!test_and_clear_bit(NVME_TCP_Q_LIVE, &queue->flags))
+	if (!test_and_clear_bit(I10_HOST_Q_LIVE, &queue->flags))
 		return;
 
 	__i10_host_stop_queue(queue);
@@ -1638,7 +1638,7 @@ static int i10_host_start_queue(struct nvme_ctrl *nctrl, int idx)
 		ret = nvmf_connect_admin_queue(nctrl);
 
 	if (!ret) {
-		set_bit(NVME_TCP_Q_LIVE, &ctrl->queues[idx].flags);
+		set_bit(I10_HOST_Q_LIVE, &ctrl->queues[idx].flags);
 	} else {
 		__i10_host_stop_queue(&ctrl->queues[idx]);
 		dev_err(nctrl->device,
@@ -2279,7 +2279,7 @@ static blk_status_t i10_host_queue_rq(struct blk_mq_hw_ctx *hctx,
 	struct i10_host_queue *queue = hctx->driver_data;
 	struct request *rq = bd->rq;
 	struct i10_host_request *req = blk_mq_rq_to_pdu(rq);
-	bool queue_ready = test_bit(NVME_TCP_Q_LIVE, &queue->flags);
+	bool queue_ready = test_bit(I10_HOST_Q_LIVE, &queue->flags);
 	blk_status_t ret;
 
 	if (!nvmf_check_ready(&queue->ctrl->ctrl, rq, queue_ready))

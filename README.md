@@ -8,7 +8,7 @@ i10 is a new in-kernel remote storage I/O stack for high-performance network and
 ## Requirements
 i10 is currently implemented as a new fabric of the NVMe-over-Fabrics implementation, so it works like NVMe-over-i10 based on the kernel TCP/IP stack.
 
-i10 has been successfully tested on Ubuntu 16.04 LTS with kernel 4.20.0 --- we use the kernel source (ver 4.20.0) that includes NVMe-over-TCP implementation ([download](http://git.infradead.org/nvme.git/snapshot/eb00c1a1852eb91e1b303aad0cb331318b7b9a0c.tar.gz)).
+i10 has been successfully tested on Ubuntu 16.04 LTS with kernel 4.20.0 --- we use the kernel source (ver 4.20.0) that includes NVMe-over-TCP implementation ([download](http://git.infradead.org/nvme.git/snapshot/eb00c1a1852eb91e1b303aad0cb331318b7b9a0c.tar.gz)) (-> use this link: [download](http://www.cs.cornell.edu/~jaehyun/eb00c1a1852eb91e1b303aad0cb331318b7b9a0c.tar.gz)).
 
 ## Setup instructions (with root)
 We assume the kernel source tree is downloaded in /usr/src/linux-4.20.0/. You should overwrite the i10 code to the kernel source tree and compile the kernel to use i10. We plan to provide i10 kernel patches for later versions of kernels (e.g., >= ver 5.0.0).
